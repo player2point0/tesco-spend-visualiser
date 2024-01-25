@@ -1,28 +1,20 @@
-import { useState } from "react";
-
-function Purchase({ data }) {
+function Purchase({ data, goBackFunc }) {
 	console.log(data);
-	const [clicked, setClicked] = useState(false);
 
 	return (
 		<div>
-			<button onClick={() => setClicked((val) => !val)}>
-				{data.timeStamp}
-			</button>
-			{clicked && <div> {data.basketValueGross} </div>}
-			{clicked && (
-				<div>
-					{data.product.map((p) => {
-						return (
-							<p>
-								{p?.name}
-								{p?.price}
-								{p?.quantity}
-							</p>
-						);
-					})}
-				</div>
-			)}
+			<button onClick={() => goBackFunc()}>back</button>
+			<div> total {data.basketValueGross} </div>
+			<div>
+				{data.product.map((p) => {
+					return (
+						<p>
+							{p?.name} £{p?.price} quantity:{p?.quantity}
+						</p>
+					);
+				})}
+			</div>
+			)
 		</div>
 	);
 }
