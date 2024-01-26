@@ -1,12 +1,10 @@
-function Purchase({ data, goBackFunc }) {
-	console.log(data);
-
+function PurchaseBreakdown({ data, goBackFunc }) {
 	return (
 		<div>
 			<button onClick={() => goBackFunc()}>back</button>
-			<div> total {data.basketValueGross} </div>
+			<div> total {data.total} </div>
 			<div>
-				{data.product.map((p) => {
+				{data.products.map((p) => {
 					return (
 						<p>
 							{p?.name} £{p?.price} quantity:{p?.quantity}
@@ -19,4 +17,4 @@ function Purchase({ data, goBackFunc }) {
 	);
 }
 
-export default Purchase;
+export default PurchaseBreakdown;

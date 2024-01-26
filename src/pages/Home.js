@@ -1,9 +1,8 @@
-import Purchase from "../components/Purchase";
+import PurchaseBreakdown from "../components/PurchaseBreakdown";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Stats from "./Stats";
 
-function Home({ data }) {
+function Home({ purchases }) {
 	const [currentPurchase, setCurrentPurchase] = useState(null);
 
 	return (
@@ -13,17 +12,17 @@ function Home({ data }) {
 			</Link>
 
 			{currentPurchase === null &&
-				data?.Purchase[0].map((p) => {
+				purchases.map((p) => {
 					return (
 						<div>
 							<button onClick={() => setCurrentPurchase(p)}>
-								{p?.timeStamp}
+								{p?.timeStamp.toString()}
 							</button>
 						</div>
 					);
 				})}
 			{currentPurchase != null && (
-				<Purchase
+				<PurchaseBreakdown
 					data={currentPurchase}
 					goBackFunc={() => setCurrentPurchase(null)}
 				/>

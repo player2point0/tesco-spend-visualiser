@@ -2,22 +2,22 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Stats from "./pages/Stats";
-import { loadData } from "./logic/dataLoader";
+import { loadPurchases } from "./logic/DataLoader";
 import { useState } from "react";
 
 function App() {
 	// <Route path="blogs" element={<Blogs />} />
-	const [data] = useState(loadData());
+	const [purchases] = useState(loadPurchases());
 
-	console.log(data);
+	console.log(purchases);
 
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<Home data={data} />}>
-					<Route index element={<Home data={data} />} />
+				<Route path="/" element={<Home purchases={purchases} />}>
+					<Route index element={<Home purchases={purchases} />} />
 				</Route>
-				<Route path="/stats" element={<Stats data={data} />} />
+				<Route path="/stats" element={<Stats purchases={purchases} />} />
 			</Routes>
 		</BrowserRouter>
 	);
